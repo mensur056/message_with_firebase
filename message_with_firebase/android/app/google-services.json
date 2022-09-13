@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1023115742314",
+    "project_id": "sds-sdsd-sdsds",
+    "storage_bucket": "sds-sdsd-sdsds.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023115742314:android:f7a5c3e0864c4b92bd8e13",
+        "android_client_info": {
+          "package_name": "com.example.message_with_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023115742314-gi2qlvq8ncudk0u64i0kbv2o3bndnv5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp1inukypzwOMRHN8-XC2AntvSkuoV98c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023115742314-gi2qlvq8ncudk0u64i0kbv2o3bndnv5k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
