@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/auth.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,29 +9,34 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const providerConfigs = [EmailProviderConfiguration()];
+
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/profile',
+      routes: {
+        '/sign-in': (context) {
+          return SignInScreen(
+            providerConfigs: providerConfigs,
+            actions: [
+              AuthStateChangeAction<SignedIn>((context, state) {
+                Navigator.pushReplacementNamed(context, '/profile');
+              }),
+            ],
+          );
+        },
+        '/profile': (context) {
+          return ProfileScreen(
+            providerConfigs: providerConfigs,
+            actions: [
+              SignedOutAction((context) {
+                Navigator.pushReplacementNamed(context, '/sign-in');
+              }),
+            ],
+          );
+        },
+      },
     );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
